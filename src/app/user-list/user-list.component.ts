@@ -4,25 +4,27 @@ import { User } from '../model/user';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-
   /**
    * FELADAT!
    * Hozd létre az alábbi Input tulajdonságot.
    * @var users {User[]} - Input tulajdonság
    * @default []
    */
-  
+
+  @Input() users: User[] = [];
   @Output() delUser: EventEmitter<User> = new EventEmitter();
   currentUser: User = new User();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onSelectUser(user: User): void {
+    this.currentUser = user;
   }
-
   /**
    * FELADAT!
    * Az eye gombra kattintás esetén lefutó metódus.
@@ -31,8 +33,11 @@ export class UserListComponent implements OnInit {
    * @param user {User} - egy felhasználó
    * @returns {void}
    */
-  
 
+  onDeleteUser(user: User): void {
+    this.delUser.emit(user);
+    this.currentUser = new User();
+  }
   /**
    * FELADAT!
    * Az app-user-detail delUser eseményére lefutó metódus.
@@ -43,6 +48,4 @@ export class UserListComponent implements OnInit {
    * @param user {User} - egy felhasználó
    * @returns {void}
    */
-  
-
 }

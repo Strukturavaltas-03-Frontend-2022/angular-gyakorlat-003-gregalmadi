@@ -1,15 +1,20 @@
 <div class="card user-card" *ngIf="user.id > 0">
   <div class="card-header">Selected User</div>
   <div class="card-body">
+    <p>{{ user.id }}</p>
+    <p>{{ user.name }}</p>
+    <p>{{ user.email }}</p>
+    <p>{{ user.address }}</p>
     <!--
       FELADAT!
       Jelenítsd meg a user négy tulajdonságát egymás alatti p elemekben:
       id, name, email, address
      -->
 
-
-
     <p>
+      <button (click)="onDelete(user)" class="btn btn-danger btn-block">
+        <i class="fa fa-trash" aria-hidden="true"></i>Delete
+      </button>
       <!--
         FELADAT!
         1. Készíts ide egy gombot btn, btn-danger és btn-block osztályokkal.
@@ -17,9 +22,6 @@
         3. Állítsd be a gombra event binding segítségével a click
         eseményre az onDelete metódust és add át neki a user-t.
        -->
-
-
-
     </p>
   </div>
 </div>
